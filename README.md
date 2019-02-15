@@ -1,29 +1,11 @@
-# vue-adaljs
+# Sample Vue.js SPA with [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js) and [PnP.js](https://github.com/pnp/pnpjs) integration
 
-## Project setup
-```
-npm install
-```
+Blog post [to be added](to be added)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## How to run:
+1. Create a new app registration in Azure AD and provide read access to SharePoint 
+2. Add `http://localhost:8080/` as a valid reply url for the app registration
+3. Open `src/adal/adalConfig.ts` and update `clientId` and `tenant` parameters
+4. Edit `.env.development` SharePoint site url
+5. `$ npm i`
+6. `$ npm run serve`
