@@ -3,7 +3,7 @@
 Blog post [to be added](to be added)
 
 ## How to run:
-1. Create a new app registration in Azure AD and provide read access to SharePoint 
+1. Create a new app registration in Azure AD and provide read access to SharePoint, enable implicit oauth flow by modifying `manifest.json`
 2. Add `http://localhost:8080/` as a valid reply url for the app registration
 3. Open `src/adal/adalConfig.ts` and update `clientId` and `tenant` parameters
 4. Edit `.env.development` SharePoint site url

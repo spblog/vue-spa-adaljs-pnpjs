@@ -29,22 +29,23 @@ export default class Auth extends Vue {
   public beforeMount(): void {
     authContext.handleWindowCallback();
 
+    // we are inside renew iframe, thus do nothing
     if (authContext.isCallback(window.location.hash)) {
       this.renewIframe = true;
       return;
     }
 
-    if (
-      !authContext.getCachedToken(adalConfig.clientId) ||
-      !authContext.getCachedUser()
-    ) {
+    // no user context, let's redirect to authentication page
+    if (!authContext.getCachedToken(adalConfig.clientId) || !authContext.getCachedUser()) {
       authContext.login();
-    } else if (authContext.getLoginError()) {
+    } else // show error if there is an error response from Office 365
+    if (authContext.getLoginError()) { 
       this.hasError = true;
       this.errorMessage = authContext.getLoginError();
-    } else {
+    } else { // user was authenticated, show child content and initialize pnp.js
       this.authenticated = true;
 
+      // pnp.js initialization
       const fetchClientFactory = () => {
         return new PnPFetchClient(authContext);
       };
